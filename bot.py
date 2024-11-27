@@ -51,7 +51,7 @@ async def save_progress(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text("Por favor, inicia el rastreo con /empezar primero.")
 # Función principal para manejar los comandos
 def main() -> None:
-    # Crear el Updater y pasarle el TOKEN del bot
+    # Crear el Updater y pasarle el TOKEN del bo
     application = Application.builder().token(BOT_TOKEN).build()
     # Añadir los manejadores de comandos
     application.add_handler(CommandHandler("empezar", start_tracking))
