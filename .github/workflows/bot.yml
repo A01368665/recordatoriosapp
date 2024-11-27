@@ -9,9 +9,10 @@ on:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    environment: production
     permissions:
         contents: read
-        secrets: read
+     
     steps:
       # Checkout the repository
       - name: Checkout repository
