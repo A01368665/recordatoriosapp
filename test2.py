@@ -24,7 +24,7 @@ async def start_tracking(update: Update, context: CallbackContext) -> None:
     # Configurar la tarea que se repite cada 20 minutos
     job_queue = context.application.job_queue
     job_name = f"track_{user_id}"  # Identificador único del job
-    job_queue.run_repeating(track_progress, interval=10, first=0, data=user_id, name=job_name)
+    job_queue.run_repeating(track_progress, interval=1200, first=0, data=user_id, name=job_name)
 
 
 async def track_progress(context: CallbackContext) -> None:
