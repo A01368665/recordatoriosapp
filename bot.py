@@ -11,7 +11,9 @@ logger = logging.getLogger(__name__)
 
 # Your bot token here
 BOT_TOKEN = os.getenv("TOKEN")
-
+if not BOT_TOKEN:
+    print("Error: BOT_TOKEN is not set. Exiting.")
+    sys.exit(1)
 # Dictionary to store user responses
 user_responses = {}
 tracking_users = {}
