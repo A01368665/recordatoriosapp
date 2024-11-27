@@ -1,13 +1,12 @@
 name: Telegram Reminder Bot
 
 on:
-  workflow_dispatch: # Manual trigger option
-  push:               # Trigger when new code is pushed
+  workflow_dispatch: # Allow manual triggering
+  push:              # Trigger on push to main
     branches:
       - main
 
 jobs:
-
   run-bot:
     runs-on: ubuntu-latest
 
@@ -22,19 +21,23 @@ jobs:
         with:
           python-version: "3.x"
 
+      # Debug environment variables
+      - name: Debug environment
+        run: |
+          echo "Testing if TOKEN is set..."
+          echo "TOKEN=$TOKEN"
+        env:
+          TOKEN: ${{ secrets.BOT_TOKEN }}
+
       # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
-      - name: Debug environment
-        run: printenv | grep TOKEN
 
-
-      # Run the Telegram bot
+      # Run the bot
       - name: Run bot
         env:
-          TOKEN: "${{ secrets.TOKEN }}"
+          TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           python bot.py
