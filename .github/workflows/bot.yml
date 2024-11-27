@@ -1,10 +1,14 @@
 name: Telegram Reminder Bot
 
 on:
+ schedule:
+    - cron: '0 0 */2 * *'  # This cron expression means "every 2 days at midnight UTC"
+  
   workflow_dispatch: # Allow manual triggering
   push:              # Trigger on push to main
     branches:
       - main
+
 
 jobs:
   run-bot:
