@@ -30,6 +30,6 @@ jobs:
       # Run the Telegram bot
       - name: Run bot
         env:
-          TOKEN: ${{ secrets.BOT_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: |
           python bot.py
